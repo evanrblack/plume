@@ -39,4 +39,24 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Set up default url for ActionMailer.
+  config.action_mailer.default_url_options = { host: 'localhost' }
+
+  # Set up Geocoder Stub
+  Geocoder.configure(lookup: :test)
+
+  stub = [
+           {
+             latitude: 36.07,
+             longitude: -94.17,
+             address: 'Fayetteville, AR, USA',
+             state: 'Arkansas',
+             state_code: 'AR',
+             country: 'United States',
+             country_code: 'US'
+           }
+         ]
+
+  Geocoder::Lookup::Test.set_default_stub stub
 end
