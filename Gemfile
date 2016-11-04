@@ -81,6 +81,7 @@ group :development do
   # For managing server
   gem 'capistrano3-puma'
 end
+# For managing env variables
 gem 'dotenv-rails'
 
 # CODE QUALITY
