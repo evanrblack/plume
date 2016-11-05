@@ -2,8 +2,8 @@
 lock '3.6.1'
 
 # Basics
-set :application, 'carecurrent'
-set :repo_url, 'git@gitlab.com:joinfeather/carecurrent.git'
+set :application, 'pluma'
+set :repo_url, 'git@gitlab.com:joinfeather/pluma.git'
 set :user, 'deploy'
 set :use_sudo, false
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
