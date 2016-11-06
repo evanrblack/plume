@@ -1,0 +1,16 @@
+%nav.navbar.navbar-default
+  .container
+    .navbar-header
+      = button_tag type: 'button', class: 'navbar-toggle collapsed', data: { toggle: 'collapse', target: '#navbar-links' }, aria: { expanded: 'false' } do
+        %span.sr-only Toggle navigation
+        - 3.times do
+          %i.icon-bar
+      = link_to root_path, class: 'navbar-brand' do
+        %i.fa.fa-plus{ style: 'color: purple;' }
+        Plume
+
+    #navbar-links.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - [['Home', root_path]].each do |name, path|
+          %li.nav-item
+            = link_to name, path, class: 'nav-link'
