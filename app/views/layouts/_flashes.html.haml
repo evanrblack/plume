@@ -1,0 +1,5 @@
+#flashes.container
+  - flash.each do |type, message|
+    .flash.alert{ class: "alert-#{type}" }
+      %strong= message
+      = link_to '&times;'.html_safe, '#', class: 'close', data: { dismiss: 'alert' }
