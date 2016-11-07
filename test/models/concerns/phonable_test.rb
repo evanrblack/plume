@@ -13,7 +13,7 @@ module PhonableTest
     model.phone_number.must_equal '+19315550677'
   end
 
-  it 'must reject invalid phone numbers' do
+  it 'must reject invalid phone number' do
     [
       nil,
       '1234',
@@ -26,7 +26,7 @@ module PhonableTest
     end
   end
 
-  it 'must have human parsable formatting' do
+  it 'must have human parsable phone number' do
     model.phone_number = '+19315550677'
     model.save
     model.phone_number_formatted.must_equal '(931) 555-0677'

@@ -4,54 +4,11 @@
 
 ## Models
 
-### Login
-* (devise fields)
-* person_type
-* person_id
-
-### Caregiver
-- Birthdatable
-- Emailable
-- Genderable
-- Groupable
-- Locatable
-- Messageable
-- Nameable
-- Phonable
-- Taggable
-
-### Client
-- Birthdatable
-- Emailable
-- Genderable
-- Groupable
-- Locatable
-- Messageable
-- Nameable
-- Phonable
-- Taggable
-* description
-
 ### Contact
 - Emailable
 - Nameable
 - Phonable
 * client_id
-
-### Group
-- Emailable
-- Groupable
-- Locatable
-- Messageble
-- Phonable
-* name
-
-### Manager
-- Emailable
-- Groupable
-- Messageable
-- Nameable
-- Phonable
 
 ### Message
 * body
@@ -91,32 +48,6 @@
 ***
 
 ## Concerns
-
-### Birthdatable
-
-### Emailable
-* email
-
-### Genderable
-* gender
-
-### Groupable (or Organizable?)
-* group_id
-
-### Locatable
-* street_address
-* extra_address
-* city
-* state
-* latitude
-* longitude
-
-### Nameable (or Personable...?)
-* first_name
-* last_name
-
-### Phonable
-* phone_number
 
 ### Taggable
 - has_many tags, through: :tag_joins
