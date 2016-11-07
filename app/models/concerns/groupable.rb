@@ -3,7 +3,7 @@ module Groupable
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :group, inverse_of: name.underscore.pluralize.to_sym
+    belongs_to :group, inverse_of: model_name.plural.to_sym
     validates :group, presence: true, allow_nil: true
   end
 end

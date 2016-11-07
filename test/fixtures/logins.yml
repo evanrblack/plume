@@ -2,12 +2,12 @@ caregiver_login:
   email: kari@example.com
   encrypted_password: <%= Devise::Encryptor.digest(Login, 'password') %>
   confirmed_at: <%= Time.now - 1.hour %>
-  person_type: Caregiver
-  person: caregiver
+  loginable_type: Caregiver
+  loginable: caregiver
 
 manager_login:
   email: manny@example.com
   encrypted_password: <%= Devise::Encryptor.digest(Login, 'password') %>
   confirmed_at: <%= Time.now - 1.hour %>
-  person_type: Manager
-  person: manager
+  loginable_type: Manager
+  loginable: manager

@@ -26,7 +26,7 @@ class DeviseCreateLogins < ActiveRecord::Migration[5.0]
 
       t.timestamps null: false
 
-      t.references :person, polymorphic: true, unique: true
+      t.references :loginable, polymorphic: true, unique: true
     end
 
     add_index :logins, :email,                unique: true

@@ -7,5 +7,5 @@ class Login < ApplicationRecord
          :rememberable, :trackable, :validatable,
          :confirmable
 
-  belongs_to :person, polymorphic: true, inverse_of: :login
+  belongs_to :loginable, polymorphic: true, inverse_of: :login
 end

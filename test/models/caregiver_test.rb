@@ -2,8 +2,8 @@ require 'test_helper'
 
 describe Caregiver do
   include BirthdatableTest, EmailableTest, GenderableTest,
-          GroupableTest, LocatableTest, NameableTest,
-          PhonableTest
+          GroupableTest, LocatableTest, LoginableTest,
+          NameableTest, PhonableTest
 
   let(:caregiver) { caregivers(:caregiver) }
   let(:model) { caregiver }

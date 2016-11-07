@@ -1,7 +1,8 @@
 require 'test_helper'
 
 describe Manager do
-  include EmailableTest, GroupableTest, NameableTest, PhonableTest
+  include EmailableTest, GroupableTest, LoginableTest,
+          NameableTest, PhonableTest
 
   let(:manager) { managers(:manager) }
   let(:model) { manager }

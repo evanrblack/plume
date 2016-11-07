@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(version: 20161107023829) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "person_type"
-    t.integer  "person_id"
+    t.string   "loginable_type"
+    t.integer  "loginable_id"
     t.index ["confirmation_token"], name: "index_logins_on_confirmation_token", unique: true
     t.index ["email"], name: "index_logins_on_email", unique: true
-    t.index ["person_type", "person_id"], name: "index_logins_on_person_type_and_person_id"
+    t.index ["loginable_type", "loginable_id"], name: "index_logins_on_loginable_type_and_loginable_id"
     t.index ["reset_password_token"], name: "index_logins_on_reset_password_token", unique: true
   end
 
