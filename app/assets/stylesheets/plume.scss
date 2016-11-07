@@ -1,5 +1,9 @@
 $nice-grey: #b2b2b2;
 
+.navbar-brand .fa.fa-plus {
+  color: $brand-primary;
+}
+
 .card {
   border: 1px solid $nice-grey;
   border-radius: 4px;
