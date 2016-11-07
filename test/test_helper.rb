@@ -10,6 +10,11 @@ Capybara.javascript_driver = :poltergeist
 require 'minitest/reporters'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
+# Concern tests
+Dir[File.dirname(__FILE__) + '/models/concerns/*.rb'].each do |file|
+  require file
+end
+
 module ActiveSupport
   class TestCase
     # Setup all fixtures in test/fixtures/*.yml

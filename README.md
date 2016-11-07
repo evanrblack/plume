@@ -10,27 +10,27 @@
 * person_id
 
 ### Caregiver
-- Datable
+- Birthdatable
 - Emailable
 - Genderable
+- Groupable
 - Locatable
 - Messageable
 - Nameable
 - Phonable
 - Taggable
-* group_id
 
 ### Client
-- Datable
+- Birthdatable
 - Emailable
 - Genderable
+- Groupable
 - Locatable
 - Messageable
 - Nameable
 - Phonable
 - Taggable
 * description
-* group_id
 
 ### Contact
 - Emailable
@@ -40,17 +40,18 @@
 
 ### Group
 - Emailable
+- Groupable
 - Locatable
+- Messageble
 - Phonable
 * name
-* supergroup_id
 
 ### Manager
 - Emailable
+- Groupable
 - Messageable
 - Nameable
 - Phonable
-* group_id
 
 ### Message
 * body
@@ -91,11 +92,16 @@
 
 ## Concerns
 
+### Birthdatable
+
 ### Emailable
 * email
 
 ### Genderable
 * gender
+
+### Groupable (or Organizable?)
+* group_id
 
 ### Locatable
 * street_address
@@ -114,9 +120,6 @@
 
 ### Taggable
 - has_many tags, through: :tag_joins
-
-### Groupable (or Organizable?)
-* group_id
 
 ### Messageable
 - has_many messages

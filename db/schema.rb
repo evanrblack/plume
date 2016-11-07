@@ -10,7 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106203850) do
+ActiveRecord::Schema.define(version: 20161107023829) do
+
+  create_table "caregivers", force: :cascade do |t|
+    t.string   "first_name",     null: false
+    t.string   "last_name",      null: false
+    t.integer  "gender",         null: false
+    t.date     "birthdate",      null: false
+    t.string   "phone_number",   null: false
+    t.string   "street_address", null: false
+    t.string   "extra_address"
+    t.string   "city",           null: false
+    t.string   "state",          null: false
+    t.string   "zip_code",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["group_id"], name: "index_caregivers_on_group_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "first_name",     null: false
+    t.string   "last_name",      null: false
+    t.integer  "gender",         null: false
+    t.date     "birthdate",      null: false
+    t.string   "phone_number",   null: false
+    t.string   "street_address", null: false
+    t.string   "extra_address"
+    t.string   "city",           null: false
+    t.string   "state",          null: false
+    t.string   "zip_code",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["group_id"], name: "index_clients_on_group_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string  "name",           null: false
+    t.string  "email",          null: false
+    t.string  "phone_number",   null: false
+    t.string  "street_address", null: false
+    t.string  "extra_address"
+    t.string  "city",           null: false
+    t.string  "state",          null: false
+    t.string  "zip_code",       null: false
+    t.float   "latitude"
+    t.float   "longitude"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_groups_on_group_id"
+  end
 
   create_table "logins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,6 +87,16 @@ ActiveRecord::Schema.define(version: 20161106203850) do
     t.index ["email"], name: "index_logins_on_email", unique: true
     t.index ["person_type", "person_id"], name: "index_logins_on_person_type_and_person_id"
     t.index ["reset_password_token"], name: "index_logins_on_reset_password_token", unique: true
+  end
+
+  create_table "managers", force: :cascade do |t|
+    t.string   "first_name",   null: false
+    t.string   "last_name",    null: false
+    t.string   "phone_number", null: false
+    t.integer  "group_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["group_id"], name: "index_managers_on_group_id"
   end
 
 end

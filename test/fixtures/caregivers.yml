@@ -1,0 +1,12 @@
+caregiver:
+  first_name: Kari
+  last_name: Giver
+  gender: 1
+  birthdate: 1990-02-03
+  phone_number: (479) 439-5555
+  street_address: 609 West Dickson St.
+  extra_address: No. 22
+  city: Fayetteville
+  state: AR
+  zip_code: 72701
+  group: group

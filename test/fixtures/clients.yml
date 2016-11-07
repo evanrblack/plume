@@ -1,0 +1,11 @@
+client:
+  first_name: Clyde
+  last_name: Dent
+  gender: 0
+  birthdate: 1955-06-07
+  phone_number: (479) 437-5555
+  street_address: 3425 N. College Ave.
+  city: Fayetteville
+  state: AR
+  zip_code: 72703
+  group: group
