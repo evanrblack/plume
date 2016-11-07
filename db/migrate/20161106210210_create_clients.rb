@@ -23,6 +23,9 @@ class CreateClients < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
 
+      # Custom
+      t.text :description
+
       # Groupable
       t.belongs_to :group
 

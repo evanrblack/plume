@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20161107171214) do
     t.string   "zip_code",       null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.text     "description"
     t.integer  "group_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
