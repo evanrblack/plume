@@ -1,0 +1,8 @@
+$nice-grey: #b2b2b2;
+
+.card {
+  border: 1px solid $nice-grey;
+  border-radius: 4px;
+  box-shadow: 4px 4px 2px $nice-grey;
+  padding: 10px;
+}

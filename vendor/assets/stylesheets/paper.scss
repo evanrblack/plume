@@ -91,7 +91,8 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
   text-transform: uppercase;
   border: none;
   @include box-shadow(1px 1px 4px rgba(0,0,0,.4));
-  @include transition(all 0.4s);
+  // Modified, disabled this
+  // @include transition(all 0.4s);
   @include ripple();
 
   &-link {
@@ -153,7 +154,8 @@ button {
 }
 
 a {
-  @include transition(all 0.2s);
+  // Modified, disabled this
+  // @include transition(all 0.2s);
 }
 
 // Tables =====================================================================
@@ -590,7 +592,8 @@ input[type="checkbox"],
   font-weight: 300;
   line-height: 24px;
   opacity: 0.6;
-  @include transition(all 0.2s);
+  // Modified, disabled this
+  // @include transition(all 0.2s);
 
   &:hover {
     opacity: 1;

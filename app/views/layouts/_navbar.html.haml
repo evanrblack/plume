@@ -11,6 +11,6 @@
 
     #navbar-links.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
-        - [['Home', root_path]].each do |name, path|
+        - navbar_links.each do |name, path, method|
           %li.nav-item
-            = link_to name, path, class: 'nav-link'
+            = link_to name, path, class: 'nav-link', method: (method || :get)

@@ -4,5 +4,5 @@ class TagJoin < ApplicationRecord
   belongs_to :tag
 
   validates :tag, :taggable, presence: true
-  validates_uniqueness_of :tag_id, scope: [:taggable_id, :taggable_type]
+  validates :tag_id, uniqueness: { scope: [:taggable_id, :taggable_type] }
 end
