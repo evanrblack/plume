@@ -1,0 +1,11 @@
+health_tag:
+  name: Diabetes
+  category: health
+
+environment_tag:
+  name: Dogs
+  category: environment
+
+task_tag:
+  name: Laundry
+  category: task

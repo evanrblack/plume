@@ -2,13 +2,7 @@
 
 ***
 
-## Models
-
-### Contact
-- Emailable
-- Nameable
-- Phonable
-* client_id
+## Models to be implemented
 
 ### Message
 * body
@@ -25,15 +19,6 @@
 * duration
 * client_id
 
-### Tag
-* category
-* name
-
-### TagJoin
-* tag_id
-* taggable_type
-* taggable_id
-
 ### Visit
 * start_date
 * start_time
@@ -47,10 +32,7 @@
 
 ***
 
-## Concerns
-
-### Taggable
-- has_many tags, through: :tag_joins
+## Concerns to be implemented
 
 ### Messageable
 - has_many messages

@@ -1,0 +1,29 @@
+caregiver_health:
+  taggable_type: Caregiver
+  taggable: caregiver
+  tag: health_tag
+
+caregiver_environment:
+  taggable_type: Caregiver
+  taggable: caregiver
+  tag: environment_tag
+
+caregiver_task:
+  taggable_type: Caregiver
+  taggable: caregiver
+  tag: task_tag
+
+client_health:
+  taggable_type: Client
+  taggable: client
+  tag: health_tag
+
+client_environment:
+  taggable_type: Client
+  taggable: client
+  tag: environment_tag
+
+client_task:
+  taggable_type: Client
+  taggable: client
+  tag: task_tag
