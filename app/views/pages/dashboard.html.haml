@@ -1,2 +1,15 @@
 .container
-  %h1.text-center Dashboard
+  %h1.text-center #{@group.name}
+  .row
+    .col-md-3
+      = quick_look(32, 'Caregivers', '/', 'user', 'success')
+    .col-md-3
+      = quick_look(16, 'Clients', '/', 'home', 'info')
+    .col-md-3
+      = quick_look(8, 'Scheduled Visits', '/', 'calendar', 'warning')
+    .col-md-3
+      = quick_look(4, 'Late Visits', '/', 'alarm-clock', 'danger')
+  .card
+    %h2 This is
+    %hr
+    %p just a card

@@ -1,4 +1,4 @@
-# The class all helpers inherit from.
+# The helper module accessible from every view and controller.
 module ApplicationHelper
   def current_user
     current_login.loginable if current_login
@@ -13,5 +13,15 @@ module ApplicationHelper
       links << ['Home', root_path]
       links << ['Sign in', new_login_session_path]
     end
+  end
+
+  def quick_look(figure, unit, path, icon='star', type='info')
+    render partial: 'shared/quick_look', locals: {
+      figure: figure,
+      unit: unit,
+      path: path,
+      icon: icon,
+      type: type
+    }
   end
 end

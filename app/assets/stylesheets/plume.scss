@@ -5,8 +5,23 @@ $nice-grey: #b2b2b2;
 }
 
 .card {
-  border: 1px solid $nice-grey;
-  border-radius: 4px;
-  box-shadow: 4px 4px 2px $nice-grey;
+  @extend .panel;
   padding: 10px;
+}
+
+.quick-look {
+  .panel-heading {
+    text-align: center;
+    padding: 32px 0 12px 0;
+    line-height: 48px;
+    
+    .figure {
+      font-size: 64px;
+      font-weight: bold;
+    }
+
+    .unit {
+      font-size: 24px;
+    }
+  }
 }
