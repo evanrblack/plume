@@ -10,7 +10,7 @@ describe PagesController do
     sign_in logins(:manager_login)
     get '/'
     assert_response :success
-    assert_select 'h1', 'Dashboard'
+    assert_select 'h1', 'Acme Home Care'
   end
 
   it 'must be able to log in as a caregiver' do
