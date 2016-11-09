@@ -5,5 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @group = current_user.group
+    @caregivers = current_user.caregivers
+    @clients = current_user.clients
   end
 end

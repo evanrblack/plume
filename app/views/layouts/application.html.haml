@@ -9,6 +9,7 @@
   %body
     = render partial: 'layouts/navbar'
     = render partial: 'layouts/flashes'
+    = render partial: 'layouts/breadcrumbs'
     %main= yield
     = render partial: 'layouts/footer'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

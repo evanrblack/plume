@@ -2,9 +2,9 @@
   %h1.text-center #{@group.name}
   .row
     .col-md-3
-      = quick_look(32, 'Caregivers', '/', 'user', 'success')
+      = quick_look(@clients.length, 'Clients', clients_path, 'home', 'success')
     .col-md-3
-      = quick_look(16, 'Clients', '/', 'home', 'info')
+      = quick_look(@caregivers.length, 'Caregivers', caregivers_path, 'user', 'info')
     .col-md-3
       = quick_look(8, 'Scheduled Visits', '/', 'calendar', 'warning')
     .col-md-3

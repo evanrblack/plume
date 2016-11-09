@@ -1,7 +1,65 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ADDRESSES = JSON.parse(File.read("#{Rails.root}/db/addresses.json"))
+
+def rand_address(model)
+  address = ADDRESSES.sample
+  model.street_address = address.first
+  model.city = address.second
+  model.state = address.third
+  model.zip_code = address.fourth
+end
+
+def rand_phone_number(model)
+  model.phone_number = Faker::Base.numerify('(479) 555-####')
+end
+
+def rand_name(model)
+  model.first_name = Faker::Name.first_name
+  model.last_name = Faker::Name.last_name
+end
+
+def rand_gender(model)
+  model.gender = [0, 1].sample
+end
+
+def rand_birthdate(model, age_range)
+  model.birthdate = Time.now - rand(age_range).years
+end
+
+# Create group
+g = Group.new(name: 'Acme Home Care', email: 'hello@acmehc.com')
+rand_address(g)
+rand_phone_number(g)
+g.save
+
+# Create manager
+m = g.managers.new
+m.login = Login.new(email: 'admin@acmehc.com', password: 'password')
+rand_name(m)
+rand_phone_number(m)
+m.save
+m.login.confirm
+
+# Create caregivers
+20.times do |i|
+  cg = g.caregivers.new
+  cg.login = Login.new(email: "caregiver#{i}@example.com", password: 'password')
+  rand_name(cg)
+  rand_gender(cg)
+  rand_birthdate(cg, 18..45)
+  rand_address(cg)
+  rand_phone_number(cg)
+  cg.save
+  cg.login.confirm
+end
+
+# Create caregivers
+15.times do |i|
+  cl = g.clients.new
+  rand_name(cl)
+  rand_gender(cl)
+  rand_birthdate(cl, 55..90)
+  rand_address(cl)
+  rand_phone_number(cl)
+  cl.description = Faker::Lorem.paragraph
+  cl.save
+end

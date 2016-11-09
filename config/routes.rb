@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   end
 
   root 'pages#home'
+
+  # Requires authentication, redirects
+  resources :caregivers
+  resources :clients
 end

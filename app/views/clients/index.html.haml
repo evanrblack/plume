@@ -1,0 +1,18 @@
+.container
+  %h1.text-center Clients
+  - if @clients.any?
+    %table.table.table-striped
+      %thead
+        %th First name
+        %th Last name
+        %th Phone number
+        %th Upcoming visits
+        %th Unscheduled visits
+      %tbody
+        - @clients.each do |cl|
+          %tr
+            %td= link_to cl.first_name, cl
+            %td= link_to cl.last_name, cl
+            %td= link_to cl.phone_number_formatted, "tel:#{cl.phone_number}"
+            %td
+            %td

@@ -1,4 +1,4 @@
-# The helper module accessible from every view and controller.
+# The helper module is accessible from every view.
 module ApplicationHelper
   def current_user
     current_login.loginable if current_login
@@ -15,7 +15,7 @@ module ApplicationHelper
     end
   end
 
-  def quick_look(figure, unit, path, icon='star', type='info')
+  def quick_look(figure, unit, path, icon = 'star', type = 'info')
     render partial: 'shared/quick_look', locals: {
       figure: figure,
       unit: unit,

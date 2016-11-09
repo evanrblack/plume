@@ -1,9 +1,8 @@
 .container
+  %h1.text-center Sign in
   .row
     .col-md-6.col-md-offset-3
       .card
-        %h3 Sign in
-        %hr
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .form-group
             = f.label :email

@@ -1,0 +1,7 @@
+- if @breadcrumbs
+  .container
+    %ul.breadcrumb
+      %li= link_to 'Dashboard', root_path
+      - @breadcrumbs[0..-2].each do |breadcrumb|
+        %li= link_to breadcrumb.first, breadcrumb.last
+      %li.active= @breadcrumbs.last.first

@@ -1,0 +1,16 @@
+.container
+  %h1.text-center Caregivers
+  - if @caregivers.any?
+    %table.table.table-striped
+      %thead
+        %th First name
+        %th Last name
+        %th Phone number
+        %th Upcoming visits
+      %tbody
+        - @caregivers.each do |cg|
+          %tr
+            %td= link_to cg.first_name, cg
+            %td= link_to cg.last_name, cg
+            %td= link_to cg.phone_number_formatted, "tel:#{cg.phone_number}"
+            %td
