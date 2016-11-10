@@ -8,4 +8,5 @@ class Login < ApplicationRecord
          :confirmable
 
   belongs_to :loginable, polymorphic: true, inverse_of: :login
+  validates :loginable, presence: true
 end

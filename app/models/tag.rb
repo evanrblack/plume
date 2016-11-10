@@ -5,7 +5,8 @@ class Tag < ApplicationRecord
   validates :name, presence: true
   validates :category, inclusion: { in: Tag.categories.keys }
 
-  has_many :tag_joins, inverse_of: :tag
+  # destroy only joins, not tagged model
+  has_many :tag_joins, inverse_of: :tag, dependent: :destroy
 
   # Set up for any taggable model.
   [Caregiver, Client].each do |klass|

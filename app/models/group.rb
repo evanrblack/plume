@@ -4,12 +4,10 @@
 class Group < ApplicationRecord
   include Emailable, Groupable, Locatable, Phonable
 
-  belongs_to :group, inverse_of: :group
-
-  has_many :managers, inverse_of: :group
-  has_many :caregivers, inverse_of: :group
-  has_many :clients, inverse_of: :group
-  has_many :groups, inverse_of: :group
+  has_many :managers, inverse_of: :group, dependent: :destroy
+  has_many :caregivers, inverse_of: :group, dependent: :destroy
+  has_many :clients, inverse_of: :group, dependent: :destroy
+  has_many :groups, inverse_of: :group, dependent: :destroy
 
   validates :name, presence: true
 end

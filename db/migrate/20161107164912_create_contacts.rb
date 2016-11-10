@@ -11,6 +11,8 @@ class CreateContacts < ActiveRecord::Migration[5.0]
       # Phonable
       t.string :phone_number, null: false
 
+      t.belongs_to :client
+
       t.timestamps
     end
   end

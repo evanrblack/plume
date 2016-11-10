@@ -4,5 +4,6 @@ class Client < ApplicationRecord
           Nameable, Phonable, Taggable
   # Messageable
 
-  has_many :contacts, inverse_of: :client
+  has_many :contacts, inverse_of: :client, dependent: :destroy
+  has_many :shifts, inverse_of: :client, dependent: :destroy
 end

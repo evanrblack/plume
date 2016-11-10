@@ -3,7 +3,7 @@ module Loginable
   extend ActiveSupport::Concern
 
   included do
-    has_one :login, as: :loginable, inverse_of: :loginable
+    has_one :login, as: :loginable, inverse_of: :loginable, dependent: :destroy
     validates :login, presence: true
 
     delegate :email, to: :login

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107171214) do
+ActiveRecord::Schema.define(version: 20161110210641) do
 
   create_table "caregivers", force: :cascade do |t|
     t.string   "first_name",     null: false
@@ -56,8 +56,10 @@ ActiveRecord::Schema.define(version: 20161107171214) do
     t.string   "last_name",    null: false
     t.string   "email",        null: false
     t.string   "phone_number", null: false
+    t.integer  "client_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["client_id"], name: "index_contacts_on_client_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -107,6 +109,18 @@ ActiveRecord::Schema.define(version: 20161107171214) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["group_id"], name: "index_managers_on_group_id"
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.date     "start_date", null: false
+    t.date     "end_date"
+    t.integer  "day",        null: false
+    t.integer  "start_time", null: false
+    t.integer  "duration",   null: false
+    t.integer  "client_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_shifts_on_client_id"
   end
 
   create_table "tag_joins", force: :cascade do |t|

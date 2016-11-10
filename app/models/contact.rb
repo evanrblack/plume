@@ -3,4 +3,5 @@ class Contact < ApplicationRecord
   include Emailable, Nameable, Phonable
 
   belongs_to :client, inverse_of: :contacts
+  validates :client, presence: true
 end
