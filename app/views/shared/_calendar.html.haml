@@ -1,0 +1,28 @@
+.panel.panel-default.calendar
+  .panel-heading.text-center
+    .pull-left
+      = link_to '#', class: 'pull-left previous' do
+        %i.fa.fa-arrow-left
+    %strong.month
+    .pull-right
+      = link_to '#', class: 'pull-right next' do
+        %i.fa.fa-arrow-right
+  .panel-body
+    %table.table-bordered
+      %thead
+        - days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        - days.each do |day|
+          %th.col-md-1.text-center= day
+      %tbody
+        - 6.times do |i|
+          %tr
+            - 7.times do |j|
+              %td.day{ style: 'height: 64px; vertical-align: top; padding: 4px;' }
+                .label.label-default.pull-right.day-num= "#{i*j}."
+                %strong #{rand(4..15)}
+                Scheduled
+                %br
+                %strong #{rand(0..2)}
+                Unscheduled
+                  
+
