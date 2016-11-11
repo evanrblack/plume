@@ -1,6 +1,13 @@
 AllCops:
   Exclude:
     - 'bin/*'
+    - 'config/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+
 Rails:
   Enabled: true
 
+BlockLength:
+  Exclude:
+    - 'test/**/*'

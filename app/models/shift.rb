@@ -25,26 +25,18 @@ class Shift < ApplicationRecord
 
   # Move start_date up to first same day.
   def adjust_start_date
-    prefDay = Shift.days[self.day]
-    curDay = (start_date.wday - 1) % 7
-    diff = (prefDay - curDay).abs
-    if prefDay < curDay
-      self.start_date += 7 - diff
-    else
-      self.start_date += diff
-    end
+    pref_day = Shift.days[day]
+    cur_day = (start_date.wday - 1) % 7
+    diff = (pref_day - cur_day).abs
+    self.start_date += pref_day < cur_day ? 7 - diff : diff
   end
 
   # Move end_date back to last same day.
   def adjust_end_date
-    prefDay = Shift.days[self.day]
-    curDay = (end_date.wday - 1) % 7
-    diff = (prefDay - curDay).abs
-    if prefDay > curDay
-      self.end_date -= (7 - diff)
-    else
-      self.end_date -= diff
-    end
+    pref_day = Shift.days[day]
+    cur_day = (end_date.wday - 1) % 7
+    diff = (pref_day - cur_day).abs
+    self.end_date -= pref_day > cur_day ? 7 - diff : diff
   end
 
   def end_date_greater_than_start_date

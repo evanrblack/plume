@@ -22,7 +22,7 @@ def rand_gender(model)
 end
 
 def rand_birthdate(model, age_range)
-  model.birthdate = Time.now - rand(age_range).years
+  model.birthdate = Time.zone.now - rand(age_range).years
 end
 
 # Create group
@@ -53,7 +53,7 @@ m.login.confirm
 end
 
 # Create caregivers
-15.times do |i|
+15.times do
   cl = g.clients.new
   rand_name(cl)
   rand_gender(cl)
