@@ -8,6 +8,10 @@ class ClientsController < ApplicationController
   end
 
   def new
+    @client = Client.new
+    @health_tags = Tag.health.sort_by(&:name)
+    @environment_tags = Tag.environment.sort_by(&:name)
+    @task_tags = Tag.task.sort_by(&:name)
   end
 
   def create

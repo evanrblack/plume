@@ -6,7 +6,11 @@ $nice-grey: #b2b2b2;
 
 .card {
   @extend .panel;
-  padding: 10px;
+  padding: 10px 10px 20px 10px;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
+  }
 }
 
 .quick-look {
@@ -24,4 +28,33 @@ $nice-grey: #b2b2b2;
       font-size: 24px;
     }
   }
+}
+
+.tag {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 4px;
+  background-color: $gray;
+  color: white;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
+}
+
+.tag-health.active {
+  background-color: $brand-danger;
+}
+
+.tag-environment.active {
+  background-color: $brand-success;
+}
+
+.tag-task.active {
+  background-color: $brand-info;
 }

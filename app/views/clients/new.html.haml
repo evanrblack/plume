@@ -1,0 +1,57 @@
+.container
+  %h1.text-center Add a Client
+  .row
+    .col-md-6.col-md-offset-3
+      = form_for @client do |client_form|
+        .card
+          %h2 Basic Info
+          %hr
+          .form-group
+            = client_form.label :first_name
+            = client_form.text_field :first_name, class: 'form-control'
+          .form-group
+            = client_form.label :first_name
+            = client_form.text_field :last_name, class: 'form-control'
+          .form-group
+            = client_form.label :gender
+            - options = Client.genders.map { |k, v| [k.titleize, v] }
+            = client_form.select :gender, options, { prompt: true }, 
+              { class: 'form-control' }
+          .form-group
+            = client_form.label :birthdate
+            = client_form.date_select :birthdate, 
+              { order: [:month, :day, :year], start_year: Time.now.year - 70, end_year: Time.now.year - 18, prompt: true }, 
+              { class: 'form-control' }
+          .form-group
+            = client_form.label :phone_number
+            = client_form.phone_field :phone_number, class: 'form-control', placeholder: '(###) ###-####'
+          .form-group
+            = client_form.label :address
+            = client_form.text_field :street_address, class: 'form-control', placeholder: 'Street address'
+            = client_form.text_field :extra_address, class: 'form-control', placeholder: 'Suite number'
+            = client_form.text_field :city, class: 'form-control', placeholder: 'City'
+            = client_form.select :state, Locatable::STATES.invert, { prompt: 'State' }, { class: 'form-control' }
+            = client_form.text_field :zip_code, class: 'form-control', placeholder: 'ZIP Code'
+          .form-group
+            = client_form.label :description
+            = client_form.text_area :description, class: 'form-control', placeholder: 'Please input additional information'
+        .card
+          %h2 Tags
+          %hr
+          - { health: ['Health', @health_tags], environment: ['Environment', @environment_tags], task: ['Needs', @task_tags] }.each do |type, combo|
+            - name, tags = combo
+            .form-group
+              %h3= name.to_s.titleize
+              = client_form.collection_check_boxes :tags, tags, :id, :name do |b|
+                = b.label class: "tag tag-#{type}" do
+                  = b.check_box
+                  = b.text
+        .card
+          %h2 Tasks
+          %hr
+          -# = task_form.text_field 
+          -# = task_form.button 'Add task', type: 'button', class: 'btn btn-primary'
+         
+        .card
+          %h2 Schedule
+          %hr

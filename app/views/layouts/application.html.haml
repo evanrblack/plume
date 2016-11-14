@@ -4,6 +4,8 @@
     %title Plume
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{name: 'turbolinks-cache-control', content: 'no-cache'}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
     %meta{name: 'description', content: 'Feather for Reliance Health'}
   %body
@@ -12,4 +14,3 @@
     = render partial: 'layouts/breadcrumbs'
     %main= yield
     = render partial: 'layouts/footer'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

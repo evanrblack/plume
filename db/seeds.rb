@@ -1,3 +1,30 @@
+TAGS = { 
+  health: ['ALS', 'Allergies', "Alzheimer's", 'Arthritis', 'Asthma',
+           'Bedridden', 'COPD', 'Cancer', 'Dementia', 'Diabetes',
+           'Fall risk', 'Hearing Loss', 'Heart Disease', 'Hospice',
+           'Incontinence', 'MS', 'Memory loss', "Parkinson's",
+           'Prosthetics', 'Seizures', 'Skin Problems', 'Strokes',
+           'Tracheostomy tube', 'Vertigo', 'Vision problems', 'Wounds'],
+  environment: ['Clutter', 'Extreme Temperatures', 'Pets', 'Smoking'],
+  task: ['Bathing', 'Cleaning', 'Communication', 'Companionship',
+         'Cooking', 'Dressing', 'Feeding', 'Getting up',
+         'Going to the bathroom', 'Grooming', 'Housekeeping',
+         'Hoyer Lift', 'Incontinence Care', 'Laundry', 'Live in',
+         'Medication reminders', 'Mobility Assistance',
+         'Physical Therapy', 'Running errands', 'Transferring',
+         'Transportation']
+}
+
+TAGS.each do |category, names|
+  names.each do |name|
+    Tag.create(name: name, category: category)
+  end
+end
+
+def rand_tags(model, category, amount)
+  model.tags << Tag.send(category).sample(amount)
+end
+
 ADDRESSES = JSON.parse(File.read("#{Rails.root}/db/addresses.json"))
 
 def rand_address(model)
@@ -49,6 +76,9 @@ m.login.confirm
   rand_address(cg)
   rand_phone_number(cg)
   cg.save
+  rand_tags(cg, :health, rand(10..20))
+  rand_tags(cg, :environment, rand(1..3))
+  rand_tags(cg, :task, rand(8..16))
   cg.login.confirm
 end
 
@@ -62,4 +92,7 @@ end
   rand_phone_number(cl)
   cl.description = Faker::Lorem.paragraph
   cl.save
+  rand_tags(cl, :health, rand(1..4))
+  rand_tags(cl, :environment, rand(0..1))
+  rand_tags(cl, :task, rand(2..8))
 end

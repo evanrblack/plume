@@ -8,6 +8,7 @@ class CaregiversController < ApplicationController
   end
 
   def new
+    @caregiver = Caregiver.new
   end
 
   def create
@@ -17,6 +18,7 @@ class CaregiversController < ApplicationController
     @caregiver = Caregiver.find(params[:id])
     @breadcrumbs = [['Caregivers', caregivers_path],
                     [@caregiver.name, @caregiver]]
+    @categories_tags = @caregiver.tags.group_by(&:category)
   end
 
   def edit

@@ -1,6 +1,0 @@
-shift:
-  start_date: <%= Date.today %>
-  day: monday
-  start_time: 540
-  duration: 480
-  client: client

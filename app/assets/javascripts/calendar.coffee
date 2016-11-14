@@ -11,7 +11,8 @@ $(document).on 'turbolinks:load', ->
     event.preventDefault()
     nextMonth = new Date($(this).data('date'))
     changeMonth(calendar, nextMonth)
-  
+
+# TODO: See if this can be simplified
 changeMonth = (cal, d) ->
   chosenYear = d.getFullYear()
   chosenMonth = d.getMonth()
@@ -23,12 +24,9 @@ changeMonth = (cal, d) ->
     day = $(elem)
     dayNum = day.find('.day-num')
     day.removeClass('outside')
+    day.addClass('outside') if date.getMonth() != chosenMonth
+    day.data('date', "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}")
     # dayNum.removeClass('label-default label-primary')
-    if date.getMonth() == chosenMonth
-      # dayNum.addClass('label-primary')
-    else
-      # dayNum.addClass('label-default')
-      day.addClass('outside')
     dayNum.text(date.getDate())
   previousDate = new Date(chosenYear, chosenMonth-1)
   nextDate = new Date(chosenYear, chosenMonth+1)

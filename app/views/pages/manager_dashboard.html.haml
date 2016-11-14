@@ -6,12 +6,7 @@
     .col-md-3
       = quick_look(@caregivers.length, 'Caregivers', caregivers_path, 'user', 'info')
     .col-md-3
-      = quick_look(8, 'Scheduled Visits', '/', 'calendar', 'warning')
+      = quick_look(8, 'Unfilled Shifts', '/', 'calendar', 'warning')
     .col-md-3
       = quick_look(4, 'Late Visits', '/', 'alarm-clock', 'danger')
-  .card
-    %h2 This is
-    %hr
-    %p just a card
-
   = render partial: 'shared/calendar'
