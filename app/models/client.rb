@@ -5,4 +5,6 @@ class Client < ApplicationRecord
   # Messageable
 
   has_many :contacts, inverse_of: :client, dependent: :destroy
+  has_many :tasks, inverse_of: :client, dependent: :destroy
+  has_many :checks, through: :tasks
 end

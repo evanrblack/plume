@@ -11,24 +11,15 @@ describe Client do
     client.must_be :valid?
   end
 
-  it 'must destroy contacts on destruction' do
-    ids = client.contacts.map(&:id)
-    ids.wont_be_empty
-    client.destroy
-    ids.each do |id|
-      assert_raise ActiveRecord::RecordNotFound do
-        Contact.find(id)
-      end
-    end
-  end
-
-  it 'must destroy shifts on destruction' do
-    ids = client.shifts.map(&:id)
-    ids.wont_be_empty
-    client.destroy
-    ids.each do |id|
-      assert_raise ActiveRecord::RecordNotFound do
-        Shift.find(id)
+  [Contact, Task].each do |klass|
+    it "must destroy #{klass.model_name.plural} on destruction" do
+      ids = klass.where(client: client).map(&:id)
+      ids.wont_be_empty
+      client.destroy
+      ids.each do |id|
+        assert_raise ActiveRecord::RecordNotFound do
+          klass.find(id)
+        end
       end
     end
   end
