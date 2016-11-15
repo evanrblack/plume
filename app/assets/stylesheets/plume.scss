@@ -1,4 +1,4 @@
-$nice-grey: #b2b2b2;
+$nice-gray: #b2b2b2;
 
 .navbar-brand .fa.fa-plus {
   color: $brand-primary;
@@ -32,18 +32,26 @@ $nice-grey: #b2b2b2;
 
 .tag {
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 4px;
   background-color: $gray;
   color: white;
   cursor: pointer;
+  font-weight: bold;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   input[type='checkbox'] {
     display: none;
   }
 
-  &.active {
-    font-weight: bold;
+  &:hover {
+    opacity: 0.9;
   }
 }
 

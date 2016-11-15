@@ -1,8 +1,8 @@
 .container
   %h1.text-center Add a Client
-  .row
-    .col-md-6.col-md-offset-3
-      = form_for @client do |client_form|
+  = form_for @client do |client_form|
+    .row
+      .col-md-8.col-md-offset-2
         .card
           %h2 Basic Info
           %hr
@@ -40,8 +40,8 @@
           %hr
           - { health: ['Health', @health_tags], environment: ['Environment', @environment_tags], task: ['Needs', @task_tags] }.each do |type, combo|
             - name, tags = combo
-            .form-group
-              %h3= name.to_s.titleize
+            %h3= name.to_s.titleize
+            .well
               = client_form.collection_check_boxes :tags, tags, :id, :name do |b|
                 = b.label class: "tag tag-#{type}" do
                   = b.check_box
@@ -50,8 +50,7 @@
           %h2 Tasks
           %hr
           -# = task_form.text_field 
-          -# = task_form.button 'Add task', type: 'button', class: 'btn btn-primary'
-         
+          -# = task_form.button 'Add task', type: 'button', class: 'btn btn-primary'       
         .card
           %h2 Schedule
           %hr
