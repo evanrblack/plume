@@ -4,6 +4,10 @@ $nice-gray: #b2b2b2;
   color: $brand-primary;
 }
 
+main {
+  padding-bottom: 40px;
+}
+
 .card {
   @extend .panel;
   padding: 10px 10px 20px 10px;
@@ -31,6 +35,8 @@ $nice-gray: #b2b2b2;
 }
 
 .tag {
+  @extend .no-highlight;
+
   display: inline-block;
   border-radius: 2px;
   padding: 4px;
@@ -38,13 +44,6 @@ $nice-gray: #b2b2b2;
   color: white;
   cursor: pointer;
   font-weight: bold;
-  
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 
   input[type='checkbox'] {
     display: none;
@@ -65,4 +64,50 @@ $nice-gray: #b2b2b2;
 
 .tag-task.active {
   background-color: $brand-info;
+}
+
+/* error class */
+.error {
+  border: 1px solid red;
+  background-color: #fcc;
+  animation: shake .5s 1;
+}
+
+@keyframes shake {
+  0%, 100% {transform: translateX(0);} 
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);} 
+  20%, 40%, 60%, 80% {transform: translateX(5px);} 
+}
+
+/* rails error class */
+.field_with_errors {
+  input, select, textarea {
+    background-color: lighten($brand-danger, 45%);
+  }
+}
+
+/* overwrite defaults */
+.label {
+  font-size: 12px;
+  line-height: 24px;
+}
+
+/* utility */
+.no-highlight {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+/* schedule */
+#schedule table td.seg {
+  cursor: cell;
+
+  &.active {
+    background-color: $brand-primary;
+  }
 }

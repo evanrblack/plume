@@ -1,22 +1,28 @@
 .container
-  .text-center
-    %h1= @caregiver.name
+  %h1.text-center= @caregiver.name
   .row
     .col-md-4
       .card
         %h2 Info
         %hr
+        %ul
+          - [:age, :gender, :street_address, :city, :state, :zip_code].each do |field|
+            %li
+              %strong= "#{field.to_s.titleize}:"
+              = @caregiver.send(field)
     .col-md-4
       .card
         %h2 History
         %hr
+        %ul
+          - @caregiver.schedule.shifts_dt.each do |shift|
+            %li #{pretty_time(shift.min)} - #{pretty_time(shift.max)}
     .col-md-4
-      .card
-        %h2 Tags
-        %hr
-        - colors = { 'health' => 'danger', 'environment' => 'success', 'task' => 'info' }
-        - @categories_tags.each do |category, tags|
-          %h3= category.titleize
-          .well
-            - tags.each do |tag|
-              %span.label{class: "label-#{colors[category]}"}= tag.name
+      = render partial: 'shared/tags'
+  %hr
+  .text-right
+    = link_to 'Edit caregiver', edit_caregiver_path(@caregiver), 
+                                class: 'btn btn-primary'
+    = link_to 'Delete caregiver', @caregiver, method: :delete,
+                                              class: 'btn btn-danger',
+                                              data: { confirm: 'Are you sure?' }

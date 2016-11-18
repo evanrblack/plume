@@ -1,0 +1,33 @@
+.card
+  %h2 Basic Info
+  %hr
+  .form-group
+    = form.label :first_name
+    = form.text_field :first_name, class: 'form-control'
+  .form-group
+    = form.label :first_name
+    = form.text_field :last_name, class: 'form-control'
+  .form-group
+    = form.label :gender
+    - options = form.object.class.genders.map { |k, _| [k.titleize, k] }
+    = form.select :gender, options, { prompt: true }, 
+      { class: 'form-control' }
+  .form-group
+    = form.label :birthdate
+    = form.date_select :birthdate, 
+      { order: [:month, :day, :year], start_year: Time.now.year - 70, end_year: Time.now.year - 18, prompt: true }, 
+      { class: 'form-control' }
+  .form-group
+    = form.label :phone_number
+    = form.phone_field :phone_number, class: 'form-control', placeholder: '(###) ###-####'
+  .form-group
+    = form.label :address
+    = form.text_field :street_address, class: 'form-control', placeholder: 'Street address'
+    = form.text_field :extra_address, class: 'form-control', placeholder: 'Suite number'
+    = form.text_field :city, class: 'form-control', placeholder: 'City'
+    = form.select :state, Locatable::STATES.invert, { prompt: 'State' }, { class: 'form-control' }
+    = form.text_field :zip_code, class: 'form-control', placeholder: 'ZIP Code'
+  - if form.object.respond_to? :description
+    .form-group
+      = form.label :description
+      = form.text_area :description, class: 'form-control', placeholder: 'Please input additional information'

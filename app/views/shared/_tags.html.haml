@@ -1,0 +1,9 @@
+.card
+  %h2 Tags
+  %hr
+  - colors = { 'health' => 'danger', 'environment' => 'success', 'task' => 'info' }
+  - @categories_tags.each do |category, tags|
+    %h3= category.titleize
+    .well
+      - tags.each do |tag|
+        %span.label{class: "label-#{colors[category]}"}= tag.name

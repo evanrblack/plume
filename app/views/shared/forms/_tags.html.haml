@@ -1,0 +1,11 @@
+.card
+  %h2 Tags
+  %hr
+  - { health: ['Health', @health_tags], environment: ['Environment', @environment_tags], task: ['Needs', @task_tags] }.each do |type, combo|
+    - name, tags = combo
+    %h3= name.to_s.titleize
+    .well
+      = form.collection_check_boxes :tag_ids, tags, :id, :name do |b|
+        = b.label class: "tag tag-#{type}" do
+          = b.check_box
+          = b.text

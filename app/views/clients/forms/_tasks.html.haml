@@ -1,0 +1,15 @@
+#tasks.card
+  %h2 Tasks
+  %hr
+  %ul
+    = form.fields_for :tasks, @tasks do |task_form|
+      %li.task
+        = task_form.object.description
+        = link_to '#', class: 'remove' do
+          %i.fa.fa-times
+        = task_form.hidden_field :id
+        = task_form.hidden_field :description
+        = task_form.hidden_field :_remove
+  .form-group
+    = text_field_tag :description_copy, nil, class: 'form-control', placeholder: 'Title', autocomplete: 'off'
+  = button_tag 'Add task', type: 'button', class: 'btn btn-primary add'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115025629) do
+ActiveRecord::Schema.define(version: 20161116221157) do
 
   create_table "caregivers", force: :cascade do |t|
     t.string   "first_name",     null: false
@@ -120,16 +120,12 @@ ActiveRecord::Schema.define(version: 20161115025629) do
     t.index ["group_id"], name: "index_managers_on_group_id"
   end
 
-  create_table "shifts", force: :cascade do |t|
-    t.date     "start_date", null: false
-    t.date     "end_date"
-    t.integer  "day",        null: false
-    t.integer  "start_time", null: false
-    t.integer  "duration",   null: false
-    t.integer  "client_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_shifts_on_client_id"
+  create_table "schedules", force: :cascade do |t|
+    t.string   "week",             default: "0", null: false
+    t.integer  "schedulable_id",                 null: false
+    t.string   "schedulable_type",               null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "tag_joins", force: :cascade do |t|
@@ -147,8 +143,7 @@ ActiveRecord::Schema.define(version: 20161115025629) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.text     "description"
+    t.text     "description", null: false
     t.datetime "removed_at"
     t.integer  "client_id",   null: false
     t.datetime "created_at",  null: false

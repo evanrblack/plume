@@ -1,0 +1,6 @@
+= form_for @caregiver do |caregiver_form|
+  = render partial: 'shared/form_errors', locals: { form: caregiver_form }
+  = render partial: 'shared/forms/basic_info', locals: { form: caregiver_form }
+  = render partial: 'shared/forms/tags', locals: { form: caregiver_form }    
+  = render partial: 'shared/forms/schedule', locals: { form: caregiver_form }
+  = caregiver_form.submit "#{@caregiver.new_record? ? 'Add' : 'Update'} caregiver", class: 'btn btn-primary btn-lg'

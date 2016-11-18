@@ -24,4 +24,14 @@ module ApplicationHelper
       type: type
     }
   end
+
+  # In this case, just a time range
+  def pretty_shift(shift)
+    a = shift.min
+    b = shift.max
+    short = '%-I:%M %p'
+    medium = '%a %-I:%M %p'
+    long = '%a, %b %e, %-I:%M %p'
+    "#{a.strftime(long)} to #{b.strftime(a.day == b.day ? short : medium)}"
+  end
 end

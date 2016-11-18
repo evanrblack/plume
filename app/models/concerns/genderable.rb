@@ -11,7 +11,10 @@ module Genderable
 
   included do
     enum gender: GENDERS
-    validates :gender, inclusion: { in: Genderable::GENDERS }
+    validates :gender, inclusion: {
+      in: Genderable::GENDERS,
+      message: 'is invalid'
+    }
   end
 
   def gender_subjective

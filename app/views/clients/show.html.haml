@@ -1,2 +1,26 @@
 .container
   %h1.text-center= @client.name
+  .row
+    .col-md-4
+      .card
+        %h2 Info
+        %hr
+        %ul
+          - [:age, :gender, :street_address, :city, :state, :zip_code, :description].each do |field|
+            %li
+              %strong= "#{field.to_s.titleize}:"
+              = @client.send(field)
+    .col-md-4
+      = render partial: 'shared/tags'
+    .col-md-4
+      .card
+        %h2 Schedule
+        %hr
+        %ul
+          - @client.schedule.shifts_dt.each do |shift|
+            %li= pretty_shift(shift)
+  %hr
+  .text-right
+    = link_to 'Edit client', edit_client_path(@client), class: 'btn btn-primary'
+    = link_to 'Delete client', @client, method: :delete, class: 'btn btn-danger', 
+                                        data: { confirm: 'Are you sure?' }
