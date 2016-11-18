@@ -17,6 +17,7 @@ class PagesController < ApplicationController
     @group = current_user.group
     @caregivers = current_user.caregivers
     @clients = current_user.clients
+    @unarranged_visits = @group.clients.map { |c| c.schedule.visits }.flatten.reject(&:arranged?)
     render 'pages/manager_dashboard'
   end
 

@@ -14,9 +14,6 @@
       .card
         %h2 History
         %hr
-        %ul
-          - @caregiver.schedule.shifts_dt.each do |shift|
-            %li #{pretty_time(shift.min)} - #{pretty_time(shift.max)}
     .col-md-4
       = render partial: 'shared/tags'
   %hr

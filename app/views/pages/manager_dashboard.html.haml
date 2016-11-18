@@ -2,11 +2,16 @@
   %h1.text-center #{@group.name}
   .row
     .col-md-3
-      = quick_look(@clients.length, 'Clients', clients_path, 'home', 'success')
+      = quick_look(@clients.length, 'Clients', clients_path, 'success')
     .col-md-3
-      = quick_look(@caregivers.length, 'Caregivers', caregivers_path, 'user', 'info')
+      = quick_look(@caregivers.length, 'Caregivers', caregivers_path, 'info')
     .col-md-3
-      = quick_look(8, 'Unfilled Shifts', '/', 'calendar', 'warning')
+      = quick_look(@unarranged_visits.length, 'Unarranged Visits', '/', 'warning')
     .col-md-3
-      = quick_look(4, 'Late Visits', '/', 'alarm-clock', 'danger')
+      = quick_look(4, 'Late Visits', '/', 'danger')
+  .row
+    .col-md-3
+      = quick_look(number_with_delimiter(1942), 'Hours Billed', '/', 'success')
+    .col-md-3
+      = quick_look("10.22%", 'Readmission Rate', '/', 'danger')
   = render partial: 'shared/calendar'

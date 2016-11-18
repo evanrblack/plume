@@ -68,6 +68,7 @@ class CaregiversController < ApplicationController
     params.require(:caregiver)
           .permit(:first_name, :last_name, :gender, :birthdate, :phone_number,
                   :street_address, :extra_address, :city, :state, :zip_code,
-                  tag_ids: [])
+                  tag_ids: [],
+                  schedule_attributes: [:id, :week_b])
   end
 end

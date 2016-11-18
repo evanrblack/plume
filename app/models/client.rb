@@ -7,6 +7,7 @@ class Client < ApplicationRecord
   has_many :contacts, inverse_of: :client, dependent: :destroy
   has_many :tasks, inverse_of: :client, dependent: :destroy
   has_many :checks, through: :tasks
+  has_many :visits, inverse_of: :client, dependent: :destroy
 
   accepts_nested_attributes_for :tasks, reject_if: :reject_task?
 

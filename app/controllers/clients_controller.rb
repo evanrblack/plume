@@ -29,6 +29,7 @@ class ClientsController < ApplicationController
 
   def show
     @categories_tags = @client.tags.sort_by(&:name).group_by(&:category)
+    @visits = @client.schedule.visits
   end
 
   def edit

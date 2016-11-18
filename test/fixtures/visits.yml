@@ -1,0 +1,7 @@
+visit:
+  start_time_planned: <%= Time.zone.now - 1.hour %>
+  start_time: <%= Time.zone.now - 1.hour %>
+  start_method: text
+  end_time_planned: <%= Time.zone.now + 1.hour %>
+  caregiver: caregiver
+  client: client

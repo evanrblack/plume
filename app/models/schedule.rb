@@ -38,10 +38,17 @@ class Schedule < ApplicationRecord
   def shifts_dt
     sow = Time.zone.now.beginning_of_week
     shifts_i.map do |s, d|
-      start_time = sow + (s * 30).minutes
+      start_time = sow + s.hours
       start_time += 1.week if start_time < Time.zone.now
-      start_time..(start_time + (d * 30).minutes)
+      start_time..(start_time + d.hours)
     end.sort_by(&:min)
+  end
+
+  def visits
+    shifts_dt.map do |range|
+      schedulable.visits.find_or_initialize_by(start_time_planned: range.min,
+                                               end_time_planned: range.max)
+    end
   end
 
   def week_i

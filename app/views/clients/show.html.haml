@@ -17,8 +17,10 @@
         %h2 Schedule
         %hr
         %ul
-          - @client.schedule.shifts_dt.each do |shift|
-            %li= pretty_shift(shift)
+          - @client.schedule.visits.each do |visit|
+            %li
+              %strong= pretty_shift(visit.start_time_planned..visit.end_time_planned)
+              %ul
   %hr
   .text-right
     = link_to 'Edit client', edit_client_path(@client), class: 'btn btn-primary'

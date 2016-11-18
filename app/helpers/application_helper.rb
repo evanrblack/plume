@@ -15,12 +15,11 @@ module ApplicationHelper
     end
   end
 
-  def quick_look(figure, unit, path, icon = 'star', type = 'info')
+  def quick_look(figure, unit, path, type = 'info')
     render partial: 'shared/quick_look', locals: {
       figure: figure,
       unit: unit,
       path: path,
-      icon: icon,
       type: type
     }
   end

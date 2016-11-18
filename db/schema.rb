@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116221157) do
+ActiveRecord::Schema.define(version: 20161118025218) do
 
   create_table "caregivers", force: :cascade do |t|
     t.string   "first_name",     null: false
@@ -149,6 +149,25 @@ ActiveRecord::Schema.define(version: 20161116221157) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["client_id"], name: "index_tasks_on_client_id"
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.datetime "start_time_planned", null: false
+    t.datetime "start_time"
+    t.integer  "start_method"
+    t.float    "start_latitude"
+    t.float    "start_longitude"
+    t.datetime "end_time_planned",   null: false
+    t.datetime "end_time"
+    t.integer  "end_method"
+    t.float    "end_latitude"
+    t.float    "end_longitude"
+    t.integer  "caregiver_id",       null: false
+    t.integer  "client_id",          null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["caregiver_id"], name: "index_visits_on_caregiver_id"
+    t.index ["client_id"], name: "index_visits_on_client_id"
   end
 
 end

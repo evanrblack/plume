@@ -1,4 +1,5 @@
 $(document).on 'turbolinks:load', ->
+  showWeek()
   mouseDown = false
 
   $(document).on 'mousedown', ->
@@ -11,15 +12,21 @@ $(document).on 'turbolinks:load', ->
   $('#schedule td.seg').on 'mouseover', (event) ->
     if mouseDown
       $(this).toggleClass('active')
-      refreshWeek()
+      updateWeek()
   $('#schedule td.seg').on 'mousedown', (event) ->
     $(this).toggleClass('active')
-    refreshWeek()
+    updateWeek()
 
 showWeek = ->
   field = $("input[id$='_week_b']")
+  value = field.val()
+  $('td.seg').each (index, elem) ->
+    box = $(elem)
+    offset = box.data('offset')
+    if value.charAt(offset) == '1'
+      $(elem).addClass('active')
 
-refreshWeek = ->
+updateWeek = ->
   field = $("input[id$='_week_b']")
   week = []
   for i in [0..168]
