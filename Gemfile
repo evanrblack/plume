@@ -66,7 +66,7 @@ gem 'stripe'
 # For texting
 gem 'plivo'
 # Also for texting
-gem 'twilio'
+gem 'twilio-ruby'
 
 # MISC
 # For coming up with random stuff
