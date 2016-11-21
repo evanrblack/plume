@@ -38,6 +38,7 @@ class PagesController < ApplicationController
   end
 
   def caregiver_dashboard
+    @visits = Caregiver.visit.where('start_time_planned >= ?', Time.zone.now)
     render 'pages/caregiver_dashboard'
   end
 end
