@@ -65,6 +65,8 @@ gem 'chartkick'
 gem 'stripe'
 # For texting
 gem 'plivo'
+# Also for texting
+gem 'twilio'
 
 # MISC
 # For coming up with random stuff
