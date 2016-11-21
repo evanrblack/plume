@@ -11,17 +11,21 @@ class Ability
 
   def manager_permissions(user)
     # Can read and update itself.
-    can :read, Manager, id: user.id
-    can :update, Manager, id: user.id
+    can :read, Manager, itself: user
+    can :update, Manager, itself: user
 
     # Can CRUD only if in same group.
-    can :crud, Caregiver, group_id: user.group_id
-    can :crud, Client, group_id: user.group_id
+    can :crud, Caregiver, group: user.group
+    can :crud, Client, group: user.group
+    can :crud, Visit
   end
 
   def caregiver_permissions(user)
     # Can read and update itself.
-    can :read, Caregiver, id: user.id
-    can :update, Caregiver, id: user.id
+    can :read, Caregiver, itself: user
+    can :update, Caregiver, itself: user
+
+    # Can update its visits.
+    can :update, Visit, caregiver: user
   end
 end

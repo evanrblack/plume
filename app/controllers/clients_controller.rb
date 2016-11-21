@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
-    @client.group = current_user.group
+    @client.schedule = Schedule.new
   end
 
   def create

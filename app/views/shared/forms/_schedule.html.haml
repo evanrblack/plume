@@ -5,8 +5,8 @@
   %hr
   .form-group
     = form.fields_for :schedule, form.object.schedule do |schedule_form|
-      = schedule_form.text_field :week_b, class: 'form-control'
-      = schedule_form.text_field :id, class: 'form-control'
+      = schedule_form.hidden_field :week_b, class: 'form-control'
+      = schedule_form.hidden_field :id, class: 'form-control'
   %table.table.table-bordered.no-highlight
     %tr
       %th

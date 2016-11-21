@@ -7,15 +7,17 @@
         %th First name
         %th Last name
         %th Phone number
+        %th City
         %th Upcoming visits
-        %th Unscheduled visits
+        %th Unfilled visits
       %tbody
         - @clients.each do |cl|
           %tr
             %td= link_to cl.first_name, cl
             %td= link_to cl.last_name, cl
             %td= link_to cl.phone_number_formatted, "tel:#{cl.phone_number}"
-            %td
-            %td
-  .text-right
-    = link_to 'Add Client', new_client_path, class: 'btn btn-success'
+            %td= cl.city
+            %td= cl.schedule.visits.length
+            %td= cl.schedule.visits.reject(&:filled?).length
+  %hr
+  = link_to 'Add Client', new_client_path, class: 'btn btn-success'

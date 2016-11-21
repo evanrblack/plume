@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   # Requires authentication, redirects
   resources :caregivers
   resources :clients
+  resources :visits
 end

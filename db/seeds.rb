@@ -68,21 +68,21 @@ def rand_schedule(model, day_chance, start_time_range, duration_range)
 end
 
 # Create group
-g = Group.new(name: 'Acme Home Care', email: 'hello@acmehc.com')
+g = Group.new(name: 'Reliance Home Care', email: 'hello@reliancehc.com')
 rand_address(g)
 rand_phone_number(g)
 g.save
 
 # Create manager
 m = g.managers.new
-m.login = Login.new(email: 'admin@acmehc.com', password: 'password')
+m.login = Login.new(email: 'admin@reliancehc.com', password: 'password')
 rand_name(m)
 rand_phone_number(m)
 m.save
 m.login.confirm
 
 # Create caregivers
-20.times do |i|
+22.times do |i|
   cg = g.caregivers.new
   cg.login = Login.new(email: "caregiver#{i}@example.com", password: 'password')
   cg.schedule = Schedule.new
@@ -91,7 +91,7 @@ m.login.confirm
   rand_birthdate(cg, 18..45)
   rand_address(cg)
   rand_phone_number(cg)
-  rand_schedule(cg, 0.7, 4..22, 4..12)
+  rand_schedule(cg, 0.8, 4..20, 4..12)
   cg.save
   rand_tags(cg, :health, rand(10..20))
   rand_tags(cg, :environment, rand(1..3))
@@ -100,7 +100,7 @@ m.login.confirm
 end
 
 # Create clients
-15.times do
+20.times do
   cl = g.clients.new
   cl.schedule = Schedule.new
   rand_name(cl)

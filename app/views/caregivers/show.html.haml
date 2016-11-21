@@ -11,15 +11,17 @@
               %strong= "#{field.to_s.titleize}:"
               = @caregiver.send(field)
     .col-md-4
-      .card
-        %h2 History
-        %hr
-    .col-md-4
       = render partial: 'shared/tags'
+    .col-md-4
+      .card
+        %h2 Upcoming Visits
+        %hr
+        %ul
+          - @caregiver.visits.where('start_time_planned >= ?', Time.zone.now).order(:start_time).each do |visit|
+            %li= pretty_shift(visit.start_time_planned..visit.end_time_planned)
   %hr
-  .text-right
-    = link_to 'Edit caregiver', edit_caregiver_path(@caregiver), 
-                                class: 'btn btn-primary'
-    = link_to 'Delete caregiver', @caregiver, method: :delete,
-                                              class: 'btn btn-danger',
-                                              data: { confirm: 'Are you sure?' }
+  = link_to 'Edit caregiver', edit_caregiver_path(@caregiver), 
+                              class: 'btn btn-primary'
+  = link_to 'Delete caregiver', @caregiver, method: :delete,
+                                            class: 'btn btn-danger',
+                                            data: { confirm: 'Are you sure?' }

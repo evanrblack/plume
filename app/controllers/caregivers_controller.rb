@@ -12,6 +12,7 @@ class CaregiversController < ApplicationController
 
   def new
     @caregiver = Caregiver.new
+    @caregiver.schedule = Schedule.new
   end
 
   def create

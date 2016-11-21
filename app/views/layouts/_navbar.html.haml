@@ -6,8 +6,8 @@
         - 3.times do
           %i.icon-bar
       = link_to root_path, class: 'navbar-brand' do
-        %i.fa.fa-plus
-        Plume
+        = image_tag image_path('logo.png'), style: 'display: inline; width: 32px;'
+        RHC
 
     #navbar-links.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right

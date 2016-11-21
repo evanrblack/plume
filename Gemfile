@@ -57,6 +57,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 # For great icons
 gem 'font-awesome-rails'
+# For charts
+gem 'chartkick'
 
 # EXTERNAL
 # For billing

@@ -2,16 +2,51 @@
   %h1.text-center #{@group.name}
   .row
     .col-md-3
-      = quick_look(@clients.length, 'Clients', clients_path, 'success')
+      = quick_look(@clients.length, 'Active Clients', clients_path, 'success')
     .col-md-3
-      = quick_look(@caregivers.length, 'Caregivers', caregivers_path, 'info')
+      = quick_look(@caregivers.length, 'Active Caregivers', caregivers_path, 'info')
     .col-md-3
-      = quick_look(@unarranged_visits.length, 'Unarranged Visits', '/', 'warning')
+      = quick_look(18, 'Upcoming Discharges', '/', 'warning')
     .col-md-3
-      = quick_look(4, 'Late Visits', '/', 'danger')
+      = quick_look(@unfilled_visits.length, 'Unfilled Visits', visits_path, 'danger')
+  .row
+    .col-md-6
+      .card
+        %h2 Top 10 Client Tags
+        %hr
+        = pie_chart @client_tags
+    .col-md-6
+      .card
+        %h2 Top 10 Caregiver Tags
+        %hr
+        = pie_chart @caregiver_tags
   .row
     .col-md-3
-      = quick_look(number_with_delimiter(1942), 'Hours Billed', '/', 'success')
+      = quick_look(number_with_delimiter(2743), 'Hours Billed', '/', 'success')
+    .col-md-3
+      = quick_look('$28,800', 'Avg. Monthly Revenue', caregivers_path, 'info')
+    .col-md-3
+      = quick_look('$14,400', 'Avg. Increase', '/', 'warning')
     .col-md-3
       = quick_look("10.22%", 'Readmission Rate', '/', 'danger')
+  .row
+    .col-md-5
+      .card
+        %h2 Revenue Split
+        %hr
+        = pie_chart @revenue_split
+    .col-md-7
+      .card
+        %h2 Client Count
+        %hr
+        = column_chart @client_count
+  .row
+    .col-md-3
+      = quick_look(18, 'Upcoming Visits', visits_path, 'success')
+    .col-md-3
+      = quick_look(14, 'Ongoing Visits', visits_path, 'info')
+    .col-md-3
+      = quick_look(4, 'Concluded Visits', visits_path, 'warning')
+    .col-md-3
+      = quick_look(2, 'Late Visits', visits_path, 'danger')
   = render partial: 'shared/calendar'

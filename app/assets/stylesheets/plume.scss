@@ -111,3 +111,20 @@ main {
     background-color: $brand-primary;
   }
 }
+
+/* manage visits */
+
+#manage-visits {
+  #clients, #visits, #caregivers {
+    ul {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  }
+}
+
+.client, .visit, .caregiver {
+  &.active {
+    font-weight: bold;
+  }
+}
