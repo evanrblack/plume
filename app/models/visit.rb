@@ -11,6 +11,8 @@ class Visit < ApplicationRecord
   validates(:start_time_planned, :end_time_planned, :client, :caregiver,
             presence: true)
 
+  after_create :text_caregiver
+
   def arranged?
     persisted?
   end
@@ -78,5 +80,20 @@ class Visit < ApplicationRecord
     shared = client_tags & caregiver_tags
     missing = client_tags - caregiver_tags
     [(shared.length.to_f || 1) / (client_tags.length.to_f || 1), missing]
+  end
+
+  def to_s
+    VisitsController.helpers.pretty_shift(start_time_planned..end_time_planned)
+  end
+
+  private
+
+  def text_caregiver
+    message =  "Hi #{caregiver.name}, you've been scheduled to work #{self}. Log in to plume.pw for more details."
+    if Rails.env.production?
+      TextJob.perform_later(caregiver.phone_number, message)
+    else
+      logger.debug "Texted #{caregiver.phone_number} \"#{message}\""
+    end
   end
 end

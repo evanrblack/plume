@@ -42,7 +42,7 @@ $(document).on 'turbolinks:load', ->
   $('#visits').on 'click', 'a.visit', (event) ->
     event.preventDefault()
     # Show active
-    $('#visits a.visits').removeClass('active')
+    $('#visits a.visit').removeClass('active')
     $(this).addClass('active')
     # Get caregivers
     clientId = $(this).data('client-id')
@@ -89,7 +89,7 @@ $(document).on 'turbolinks:load', ->
         method: 'POST',
         url: '/visits.json',
         dataType: 'json',
-        data: { client_id: clientId, start_time_planned: startTimePlanned, end_time_planned: endTimePlanned, caregiver_id: caregiverId }
+        data: { visit: { client_id: clientId, start_time_planned: startTimePlanned, end_time_planned: endTimePlanned, caregiver_id: caregiverId } }
       }).done ->
         $('#caregivers ul').empty()
         visit.parent().find('.label').removeClass('label-danger').addClass('label-success').text('FILLED')
@@ -103,9 +103,10 @@ $(document).on 'turbolinks:load', ->
         method: 'PATCH',
         url: "/visits/#{visitId}.json",
         dataType: 'json',
-        data: { caregiver_id: caregiverId }
+        data: { visit: { caregiver_id: caregiverId } }
       }).done ->
-        
+        $('#caregivers ul').empty()
+        $('#visits a.visit').removeClass('active')
   
 
 refreshClients = ->
@@ -128,3 +129,7 @@ refreshClients = ->
           <span class="label label-danger">#{client.unfilled}</span>
         """)
       clientList.append(listItem)
+    capture = /^.*client_id=(\d+).*$/.exec(location.search)
+    if capture?
+      clientId = capture[1]
+      $(".client[data-client-id='#{clientId}']").click()

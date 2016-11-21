@@ -6,6 +6,7 @@
         %th First name
         %th Last name
         %th Phone number
+        %th City
         %th Upcoming visits
       %tbody
         - @caregivers.each do |cg|
@@ -13,6 +14,7 @@
             %td= link_to cg.first_name, cg
             %td= link_to cg.last_name, cg
             %td= link_to cg.phone_number_formatted, "tel:#{cg.phone_number}"
-            %td
+            %td= cg.city
+            %td= cg.visits.where('start_time_planned >= ?', Time.now).length
   %hr
   = link_to 'Add Client', new_client_path, class: 'btn btn-success'

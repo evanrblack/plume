@@ -42,17 +42,13 @@ class VisitsController < ApplicationController
   end
 
   def create
-    @visit = Visit.create(visit_params_manager)
+    @visit = Visit.create(visit_params)
     respond_with(@visit)
   end
 
   def update
     @visit = Visit.find_by(params[:id])
-    if current_user.manager?
-      @visit.update(visit_params_manager)
-    else
-      @visit.update(visit_params_caregiver)
-    end
+    @visit.update(visit_params)
     respond_with(@visit)
   end
 
@@ -65,11 +61,11 @@ class VisitsController < ApplicationController
                    end
   end
 
-  def visit_params_manager
-    params.permit(:start_time_planned, :end_time_planned, :client_id, :caregiver_id)
-  end
-
-  def visit_params_caregiver
-    params.permit(:latitude, :longitude)
+  def visit_params
+    if current_user.manager?
+      params.require(:visit).permit(:start_time_planned, :end_time_planned, :client_id, :caregiver_id)
+    elsif current_user.caregiver?
+      params.require(:visit).permit(:latitude, :longitude)
+    end
   end
 end
