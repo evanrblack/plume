@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe Client do
-  include BirthdatableTest, GenderableTest, GroupableTest,
+  include BirthdatableTest, GenderableTest, OrganizableTest,
           LocatableTest, NameableTest, PhonableTest, TaggableTest
 
   let(:client) { clients(:client) }

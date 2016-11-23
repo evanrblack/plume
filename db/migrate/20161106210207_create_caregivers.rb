@@ -26,8 +26,8 @@ class CreateCaregivers < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
 
-      # Groupable
-      t.belongs_to :group
+      # Organizable
+      t.belongs_to :organization
 
       t.timestamps
     end

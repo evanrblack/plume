@@ -26,8 +26,8 @@ class CreateClients < ActiveRecord::Migration[5.0]
       # Custom
       t.text :description
 
-      # Groupable
-      t.belongs_to :group
+      # Organizable
+      t.belongs_to :organization
 
       t.timestamps
     end

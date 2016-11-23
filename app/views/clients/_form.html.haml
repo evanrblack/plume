@@ -3,5 +3,4 @@
   = render partial: 'shared/forms/basic_info', locals: { form: client_form }
   = render partial: 'shared/forms/tags', locals: { form: client_form }
   = render partial: 'clients/forms/tasks', locals: { form: client_form }
-  = render partial: 'shared/forms/schedule', locals: { form: client_form }
   = client_form.submit "#{@client.new_record? ? 'Add' : 'Update'} client", class: 'btn btn-primary btn-lg'

@@ -1,5 +1,4 @@
 .container
   %h1.text-center Dashboard
   %ul
-    - @visits.each do |visit|
-      %li= link_to "#{visit.client.name}: #{pretty_shift(visit.start_time_planned..visit.end_time_planned)}", client
+  

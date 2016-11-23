@@ -1,20 +1,20 @@
 require 'test_helper'
 
-describe Group do
-  include EmailableTest, GroupableTest, LocatableTest, PhonableTest
+describe Organization do
+  include EmailableTest, OrganizableTest, LocatableTest, PhonableTest
 
-  let(:group) { groups(:group) }
-  let(:model) { group }
+  let(:organization) { organizations(:organization) }
+  let(:model) { organization }
 
   it 'have a valid fixture' do
-    group.must_be :valid?
+    organization.must_be :valid?
   end
 
   [Manager, Caregiver, Client].each do |klass|
     it "must destroy #{klass.model_name.plural} on destruction" do
-      ids = klass.where(group: group).map(&:id)
+      ids = klass.where(organization: organization).map(&:id)
       ids.wont_be_empty
-      group.destroy
+      organization.destroy
       ids.each do |id|
         assert_raise ActiveRecord::RecordNotFound do
           klass.find(id)

@@ -1,5 +1,5 @@
 .container
-  %h1.text-center #{@group.name}
+  %h1.text-center #{@organization.name}
   .row
     .col-md-3
       = quick_look(@clients.length, 'Active Clients', clients_path, 'success')
@@ -8,7 +8,7 @@
     .col-md-3
       = quick_look(18, 'Upcoming Discharges', '/', 'warning')
     .col-md-3
-      = quick_look(@unfilled_visits.length, 'Unfilled Visits', visits_path, 'danger')
+      = quick_look(20, 'Unfilled Visits', '/', 'danger')
   .row
     .col-md-6
       .card
@@ -42,11 +42,11 @@
         = column_chart @client_count
   .row
     .col-md-3
-      = quick_look(18, 'Upcoming Visits', visits_path, 'success')
+      = quick_look(18, 'Upcoming Visits', '/', 'success')
     .col-md-3
-      = quick_look(14, 'Ongoing Visits', visits_path, 'info')
+      = quick_look(14, 'Ongoing Visits', '/', 'info')
     .col-md-3
-      = quick_look(4, 'Concluded Visits', visits_path, 'warning')
+      = quick_look(4, 'Concluded Visits', '/', 'warning')
     .col-md-3
-      = quick_look(2, 'Late Visits', visits_path, 'danger')
+      = quick_look(2, 'Late Visits', '/', 'danger')
   = render partial: 'shared/calendar'

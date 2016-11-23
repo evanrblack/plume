@@ -1,6 +1,6 @@
-class CreateGroups < ActiveRecord::Migration[5.0]
+class CreateOrganizations < ActiveRecord::Migration[5.0]
   def change
-    create_table :groups do |t|
+    create_table :organizations do |t|
       t.string :name, null: false
 
       # Emailable
@@ -19,7 +19,7 @@ class CreateGroups < ActiveRecord::Migration[5.0]
       t.float :longitude
 
       # Groupable
-      t.belongs_to :group
+      t.belongs_to :organization
     end
   end
 end

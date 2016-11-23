@@ -10,54 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118025218) do
+ActiveRecord::Schema.define(version: 20161115022708) do
 
   create_table "caregivers", force: :cascade do |t|
-    t.string   "first_name",     null: false
-    t.string   "last_name",      null: false
-    t.integer  "gender",         null: false
-    t.date     "birthdate",      null: false
-    t.string   "phone_number",   null: false
-    t.string   "street_address", null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.integer  "gender",          null: false
+    t.date     "birthdate",       null: false
+    t.string   "phone_number",    null: false
+    t.string   "street_address",  null: false
     t.string   "extra_address"
-    t.string   "city",           null: false
-    t.string   "state",          null: false
-    t.string   "zip_code",       null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.string   "zip_code",        null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "group_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["group_id"], name: "index_caregivers_on_group_id"
-  end
-
-  create_table "checks", force: :cascade do |t|
-    t.integer  "task_id",    null: false
-    t.integer  "visit_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_checks_on_task_id"
-    t.index ["visit_id"], name: "index_checks_on_visit_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_caregivers_on_organization_id"
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string   "first_name",     null: false
-    t.string   "last_name",      null: false
-    t.integer  "gender",         null: false
-    t.date     "birthdate",      null: false
-    t.string   "phone_number",   null: false
-    t.string   "street_address", null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.integer  "gender",          null: false
+    t.date     "birthdate",       null: false
+    t.string   "phone_number",    null: false
+    t.string   "street_address",  null: false
     t.string   "extra_address"
-    t.string   "city",           null: false
-    t.string   "state",          null: false
-    t.string   "zip_code",       null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.string   "zip_code",        null: false
     t.float    "latitude"
     t.float    "longitude"
     t.text     "description"
-    t.integer  "group_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["group_id"], name: "index_clients_on_group_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_clients_on_organization_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -69,21 +60,6 @@ ActiveRecord::Schema.define(version: 20161118025218) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["client_id"], name: "index_contacts_on_client_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string  "name",           null: false
-    t.string  "email",          null: false
-    t.string  "phone_number",   null: false
-    t.string  "street_address", null: false
-    t.string  "extra_address"
-    t.string  "city",           null: false
-    t.string  "state",          null: false
-    t.string  "zip_code",       null: false
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "group_id"
-    t.index ["group_id"], name: "index_groups_on_group_id"
   end
 
   create_table "logins", force: :cascade do |t|
@@ -111,21 +87,28 @@ ActiveRecord::Schema.define(version: 20161118025218) do
   end
 
   create_table "managers", force: :cascade do |t|
-    t.string   "first_name",   null: false
-    t.string   "last_name",    null: false
-    t.string   "phone_number", null: false
-    t.integer  "group_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["group_id"], name: "index_managers_on_group_id"
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "phone_number",    null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_managers_on_organization_id"
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.string   "week",             default: "0", null: false
-    t.integer  "schedulable_id",                 null: false
-    t.string   "schedulable_type",               null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+  create_table "organizations", force: :cascade do |t|
+    t.string  "name",            null: false
+    t.string  "email",           null: false
+    t.string  "phone_number",    null: false
+    t.string  "street_address",  null: false
+    t.string  "extra_address"
+    t.string  "city",            null: false
+    t.string  "state",           null: false
+    t.string  "zip_code",        null: false
+    t.float   "latitude"
+    t.float   "longitude"
+    t.integer "organization_id"
+    t.index ["organization_id"], name: "index_organizations_on_organization_id"
   end
 
   create_table "tag_joins", force: :cascade do |t|
@@ -149,25 +132,6 @@ ActiveRecord::Schema.define(version: 20161118025218) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["client_id"], name: "index_tasks_on_client_id"
-  end
-
-  create_table "visits", force: :cascade do |t|
-    t.datetime "start_time_planned", null: false
-    t.datetime "start_time"
-    t.integer  "start_method"
-    t.float    "start_latitude"
-    t.float    "start_longitude"
-    t.datetime "end_time_planned",   null: false
-    t.datetime "end_time"
-    t.integer  "end_method"
-    t.float    "end_latitude"
-    t.float    "end_longitude"
-    t.integer  "caregiver_id",       null: false
-    t.integer  "client_id",          null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.index ["caregiver_id"], name: "index_visits_on_caregiver_id"
-    t.index ["client_id"], name: "index_visits_on_client_id"
   end
 
 end

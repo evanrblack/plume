@@ -12,7 +12,6 @@ class CaregiversController < ApplicationController
 
   def new
     @caregiver = Caregiver.new
-    @caregiver.schedule = Schedule.new
   end
 
   def create
@@ -69,7 +68,6 @@ class CaregiversController < ApplicationController
     params.require(:caregiver)
           .permit(:first_name, :last_name, :gender, :birthdate, :phone_number,
                   :street_address, :extra_address, :city, :state, :zip_code,
-                  tag_ids: [],
-                  schedule_attributes: [:id, :week_b])
+                  tag_ids: [])
   end
 end

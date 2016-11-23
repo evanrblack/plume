@@ -8,4 +8,4 @@ client:
   city: Fayetteville
   state: AR
   zip_code: 72703
-  group: group
+  organization: organization

@@ -14,11 +14,9 @@ class PagesController < ApplicationController
   private
 
   def manager_dashboard
-    @group = current_user.group
+    @organization = current_user.organization
     @caregivers = current_user.caregivers
     @clients = current_user.clients
-    @unfilled_visits = @group.clients.map { |c| c.schedule.visits }
-                             .flatten.reject(&:filled?)
 
     # Charts
     @revenue_split = { 'Organization' => 11_664, 'Caregiver' => 14_256 }
@@ -38,7 +36,6 @@ class PagesController < ApplicationController
   end
 
   def caregiver_dashboard
-    @visits = Caregiver.visit.where('start_time_planned >= ?', Time.zone.now)
     render 'pages/caregiver_dashboard'
   end
 end

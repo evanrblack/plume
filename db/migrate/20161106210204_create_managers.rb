@@ -11,8 +11,8 @@ class CreateManagers < ActiveRecord::Migration[5.0]
       # Emailable
       # taken care of by devise model and delegation
 
-      # Groupable
-      t.belongs_to :group
+      # Organization
+      t.belongs_to :organization
 
       t.timestamps
     end

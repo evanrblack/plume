@@ -12,12 +12,11 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
-    @client.schedule = Schedule.new
   end
 
   def create
     @client = Client.new(client_params)
-    @client.group = current_user.group
+    @client.organization = current_user.organization
 
     if @client.save
       flash[:success] = "Successfully added #{@client.name} as client."
@@ -29,7 +28,6 @@ class ClientsController < ApplicationController
 
   def show
     @categories_tags = @client.tags.sort_by(&:name).group_by(&:category)
-    @visits = @client.schedule.visits
   end
 
   def edit
@@ -82,7 +80,6 @@ class ClientsController < ApplicationController
                   :street_address, :extra_address, :city, :state, :zip_code,
                   :description,
                   tag_ids: [],
-                  tasks_attributes: [:id, :description, :_remove],
-                  schedule_attributes: [:id, :week_b])
+                  tasks_attributes: [:id, :description, :_remove])
   end
 end

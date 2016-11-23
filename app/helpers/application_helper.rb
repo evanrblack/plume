@@ -24,13 +24,28 @@ module ApplicationHelper
     }
   end
 
-  # In this case, just a time range
-  def pretty_shift(shift)
-    a = shift.min
-    b = shift.max
-    short = '%-I:%M %p'
-    medium = '%a %-I:%M %p'
-    long = '%a, %b %e, %-I:%M %p'
-    "#{a.strftime(long)} to #{b.strftime(a.day == b.day ? short : medium)}"
+  def strftime_format(type)
+    {
+      short: '%-I:%M %p',
+      medium: '%a %-I:%M %p',
+      long: '%a, %b %e, %-I:%M %p'
+    }[type]
+  end
+
+  def pretty_time(time)
+    return pretty_time_range(time) if time.class == Range
+    time.strftime(strftime_format(:long))
+  end
+
+  def pretty_time_range(range)
+    start_time = range.min.strftime(strftime_format(:long))
+    end_format = case range.max - range.min
+                 when 0...1.day
+                   range.max.day == range.min.day ? :short : :medium
+                 when 1.day...1.week then :medium
+                 else :long
+                 end
+    end_time = range.max.strftime(strftime_format(end_format))
+    "#{start_time} to #{end_time}"
   end
 end

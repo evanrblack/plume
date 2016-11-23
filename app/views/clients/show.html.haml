@@ -16,17 +16,6 @@
       .card
         %h2 Schedule
         %hr
-        - unfilled = @client.schedule.visits.reject(&:filled?).length
-        - if unfilled > 0
-          .alert.alert-danger
-            #{unfilled} unfilled visits in the next week.
-            %br
-            = link_to 'Click here to fill visits.', visits_path(client_id: @client.id)
-        %ul
-          - @client.schedule.visits.each do |visit|
-            %li
-              %strong= pretty_shift(visit.start_time_planned..visit.end_time_planned)
-              %ul
   %hr
   = link_to 'Edit client', edit_client_path(@client), class: 'btn btn-primary'
   = link_to 'Delete client', @client, method: :delete, class: 'btn btn-danger', 

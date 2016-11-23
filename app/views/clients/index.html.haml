@@ -17,7 +17,7 @@
             %td= link_to cl.last_name, cl
             %td= link_to cl.phone_number_formatted, "tel:#{cl.phone_number}"
             %td= cl.city
-            %td= cl.schedule.visits.length
-            %td= cl.schedule.visits.reject(&:filled?).length
+            %td
+            %td
   %hr
   = link_to 'Add Client', new_client_path, class: 'btn btn-success'

@@ -16,9 +16,6 @@
       .card
         %h2 Upcoming Visits
         %hr
-        %ul
-          - @caregiver.visits.where('start_time_planned >= ?', Time.zone.now).order(:start_time).each do |visit|
-            %li= pretty_shift(visit.start_time_planned..visit.end_time_planned)
   %hr
   = link_to 'Edit caregiver', edit_caregiver_path(@caregiver), 
                               class: 'btn btn-primary'

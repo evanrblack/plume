@@ -14,18 +14,14 @@ class Ability
     can :read, Manager, itself: user
     can :update, Manager, itself: user
 
-    # Can CRUD only if in same group.
-    can :crud, Caregiver, group: user.group
-    can :crud, Client, group: user.group
-    can :crud, Visit
+    # Can CRUD only if in same organization.
+    can :crud, Caregiver, organization: user.organization
+    can :crud, Client, organization: user.organization
   end
 
   def caregiver_permissions(user)
     # Can read and update itself.
     can :read, Caregiver, itself: user
     can :update, Caregiver, itself: user
-
-    # Can update its visits.
-    can :update, Visit, caregiver: user
   end
 end
