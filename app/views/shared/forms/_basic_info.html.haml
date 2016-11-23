@@ -15,7 +15,7 @@
   .form-group
     = form.label :birthdate
     = form.date_select :birthdate, 
-      { order: [:month, :day, :year], start_year: Time.now.year - 70, end_year: Time.now.year - 18, prompt: true }, 
+      { order: [:month, :day, :year], start_year: Time.now.year - 100, end_year: Time.now.year - 18, prompt: true }, 
       { class: 'form-control' }
   .form-group
     = form.label :phone_number
