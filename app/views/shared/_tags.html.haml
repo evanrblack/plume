@@ -1,9 +1,9 @@
 .card
   %h2 Tags
   %hr
-  - colors = { 'health' => 'danger', 'environment' => 'success', 'task' => 'info' }
-  - @categories_tags.each do |category, tags|
-    %h3= category.titleize
+  - colors = { health: 'danger', environment: 'success', task: 'info' }
+  - colors.each do |type, klass|
+    %h3= type.to_s.titleize
     .well
-      - tags.each do |tag|
-        %span.label{class: "label-#{colors[category]}"}= tag.name
+      - @tags.send(type).each do |tag|
+        %span.label{class: "label-#{klass}"}= tag.name

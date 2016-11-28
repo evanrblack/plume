@@ -27,7 +27,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @categories_tags = @client.tags.sort_by(&:name).group_by(&:category)
+    @tags = @client.tags.order(:name)
   end
 
   def edit

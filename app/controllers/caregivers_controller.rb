@@ -18,7 +18,7 @@ class CaregiversController < ApplicationController
   end
 
   def show
-    @categories_tags = @caregiver.tags.sort_by(&:name).group_by(&:category)
+    @tags = @caregiver.tags.order(:name)
   end
 
   def edit
