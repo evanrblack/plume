@@ -1,0 +1,12 @@
+.container
+  %h1.text-center Resend confirmation
+  .row
+    .col-md-6.col-md-offset-3
+      .card
+        = form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            = f.email_field :email, class: 'form-control', autofocus: true
+          = f.button 'Resend confirmation instructions', type: 'submit', class: 'btn btn-primary btn-lg'
+        %hr
+        = render partial: 'devise/shared/links'
