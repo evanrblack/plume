@@ -1,5 +1,11 @@
 # Plume
 
+This project was created for a partnership that fell through.
+
+The NGINX config or model concerns may be of use.
+
+***
+OLD README BELOW
 ***
 
 ## Models to be implemented
